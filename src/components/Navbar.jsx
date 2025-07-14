@@ -25,7 +25,7 @@ const Navbar = () => {
       {/* Desktop Nav Links */}
       <div className="hidden md:flex space-x-8 text-light font-medium">
         <a href="#grow" className="hover:text-accent transition-all">Home</a>
-        <a href="#how-it-works" className="hover:text-accent transition-all"> Services</a>
+        <a href="#services" className="hover:text-accent transition-all"> Services</a>
         <a href="#pricing" className="hover:text-accent transition-all">Portfolio</a>
         <a href="#testimonials" className="hover:text-accent transition-all">About Us</a>
       </div>
