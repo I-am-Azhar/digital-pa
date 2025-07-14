@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* 🎨 Theme Colors Using OKLCH */
+@theme {
+  --color-primary: oklch(0.35 0.02 270);   /* #2C2D43 */
+  --color-secondary: oklch(0.42 0.02 265); /* #3F4259 */
+  --color-muted: oklch(0.50 0.02 265);     /* #555874 */
+  --color-accent: oklch(0.67 0.05 265);    /* #7D81AD */
+  --color-soft: oklch(0.80 0.03 265);      /* #A7ABCC */
+  --color-light: oklch(1 0 0);             /* #FFFFFF */
+}
+
+/* 🌌 App-Wide Background */
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, oklch(0.18 0.01 270), oklch(0.35 0.02 270));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* Optional parallax feel */
+}
+
+/* ✨ Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, oklch(0.67 0.05 265), oklch(0.80 0.03 265));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 🎯 Gradient Button */
+.gradient-bg {
+  background: linear-gradient(90deg, oklch(0.67 0.05 265), oklch(0.80 0.03 265));
+}
+
+/* 🎯 Hero Section Soft Gradient */
+.hero-gradient {
+  background: linear-gradient(180deg, oklch(0.50 0.02 265 / 0.1), oklch(1 0 0 / 0));
+}
+
+/* 🧊 Hover Card Effect */
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px oklch(0.35 0.02 270 / 0.1), 0 10px 10px -5px oklch(0.35 0.02 270 / 0.04);
+}
+
+/* 🎬 Universal Transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* 🔵 Alternate Hero Gradient (if needed) */
+.hero-dark-gradient {
+  background: linear-gradient(180deg, oklch(0.18 0.01 270), oklch(0.35 0.02 270));
+}
+
+/* 🧩 Optional full-app background (custom override) */
+.app-background {
+  background: linear-gradient(180deg, oklch(0.18 0.01 270), oklch(38.919% 0.18448 263.966));
+}
+
+/* 💥 Stamp Pop Effect (Grow Section) */
+@keyframes burst {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-burst {
+  animation: burst 0.6s ease-out forwards;
+}
+
+/* 🌟 Shooting Star Sparkle */
+.shooting-star {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at center, white 0%, transparent 80%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6);
+  animation: twinkle 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.3) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9) rotate(-5deg);
+    opacity: 0;
+  }
+}
