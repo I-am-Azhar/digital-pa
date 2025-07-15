@@ -31,7 +31,7 @@ const CounterStat = ({ target, label }) => {
   return (
     <div ref={ref} className="relative flex flex-col items-center">
       <motion.h2
-        className="text-5xl font-bold text-accent z-10 flex items-center relative"
+        className="text-5xl font-bold text-blue-500 z-10 flex items-center relative"
         initial={{ scale: 1 }}
         animate={done ? { scale: [1, 1.4, 0.9, 1] } : {}}
         transition={{ duration: 0.5 }}
@@ -45,12 +45,12 @@ const CounterStat = ({ target, label }) => {
         </span>
       </motion.h2>
 
-      {/* Glow */}
+      {/* Glow behind number */}
       {done && (
-        <div className="absolute w-20 h-20 bg-accent/20 blur-2xl rounded-full -z-10 top-4" />
+        <div className="absolute w-20 h-20 bg-blue-500/20 blur-2xl rounded-full -z-10 top-4" />
       )}
 
-      <p className="text-light mt-2 text-lg">{label}</p>
+      <p className="text-white mt-2 text-lg">{label}</p>
     </div>
   );
 };

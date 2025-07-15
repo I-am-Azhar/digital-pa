@@ -1,48 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 
-/* 🎨 Theme Colors Using OKLCH */
-@theme {
-  --color-primary: oklch(0.35 0.02 270);   /* #2C2D43 */
-  --color-secondary: oklch(0.42 0.02 265); /* #3F4259 */
-  --color-muted: oklch(0.50 0.02 265);     /* #555874 */
-  --color-accent: oklch(0.67 0.05 265);    /* #7D81AD */
-  --color-soft: oklch(0.80 0.03 265);      /* #A7ABCC */
-  --color-light: oklch(1 0 0);             /* #FFFFFF */
-}
 
-/* 🌌 App-Wide Background */
+
+/* 🌌 App-Wide Background (KEEPING original) */
 body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  background: linear-gradient(180deg, oklch(0.18 0.01 270), oklch(0.35 0.02 270));
+  background: linear-gradient(180deg, #13141f, #2c2d43); /* KEPT gradient */
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; /* Optional parallax feel */
+  background-attachment: fixed;
 }
 
-/* ✨ Gradient Text */
+/* ✨ Gradient Text (Blue Gradient) */
 .gradient-text {
-  background: linear-gradient(90deg, oklch(0.67 0.05 265), oklch(0.80 0.03 265));
+  background: linear-gradient(90deg, #2563eb, #60a5fa); /* blue-600 to blue-400 */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* 🎯 Gradient Button */
+/* 🎯 Gradient Button (Blue Gradient) */
 .gradient-bg {
-  background: linear-gradient(90deg, oklch(0.67 0.05 265), oklch(0.80 0.03 265));
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
 }
 
 /* 🎯 Hero Section Soft Gradient */
 .hero-gradient {
-  background: linear-gradient(180deg, oklch(0.50 0.02 265 / 0.1), oklch(1 0 0 / 0));
+  background: linear-gradient(180deg, rgba(100, 116, 139, 0.1), rgba(255, 255, 255, 0));
 }
 
 /* 🧊 Hover Card Effect */
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px oklch(0.35 0.02 270 / 0.1), 0 10px 10px -5px oklch(0.35 0.02 270 / 0.04);
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.05); /* blue shadows */
 }
 
 /* 🎬 Universal Transitions */
@@ -50,17 +44,17 @@ body {
   transition: all 0.3s ease;
 }
 
-/* 🔵 Alternate Hero Gradient (if needed) */
+/* 🔵 Alternate Hero Gradient (Still Deep Blue) */
 .hero-dark-gradient {
-  background: linear-gradient(180deg, oklch(0.18 0.01 270), oklch(0.35 0.02 270));
+  background: linear-gradient(180deg, #13141f, #2c2d43);
 }
 
-/* 🧩 Optional full-app background (custom override) */
+/* 🧩 Optional full-app background override */
 .app-background {
-  background: linear-gradient(180deg, oklch(0.18 0.01 270), oklch(38.919% 0.18448 263.966));
+  background: linear-gradient(180deg, #13141f, #1e293b); /* slate-900 to slate-800 */
 }
 
-/* 💥 Stamp Pop Effect (Grow Section) */
+/* 💥 Stamp Pop Effect */
 @keyframes burst {
   0% {
     transform: scale(0.8);
@@ -105,3 +99,28 @@ body {
     opacity: 0;
   }
 }
+
+/* 🕳️ Inner Black Glow */
+.inner-glow {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* ✨ Outer Glow (Blue Glow) */
+.outer-glow {
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.5); /* tailwind blue-400 */
+}
+
+/* Apply this class to add a glossy shine */
+.glossy-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: radial-gradient(circle at top left, rgba(77, 80, 255, 0.3), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+

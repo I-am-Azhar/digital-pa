@@ -1,4 +1,3 @@
-// src/App.jsx
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import Grow from "./components/Grow/grow";
@@ -7,12 +6,12 @@ import Services from "./components/Services/Services";
 
 function App() {
   return (
-    <div className="app-background min-h-screen text-light">
-      <Icons /> 
+    <div className="bg-[#13141f] text-white min-h-screen">
+      <Icons />
       <Navbar />
       <HeroSection />
       <Grow />
-      <Services/>
+      <Services />
     </div>
   );
 }
