@@ -1,64 +1,145 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [showTyping, setShowTyping] = useState(false);
+  const [content, setContent] = useState({
+    brand: "",
+    links: ["", "", "", ""],
+    button: "",
+  });
 
-  const handleLinkClick = () => {
-    setIsMenuOpen(false); // Close menu after clicking any link
-  };
+  const fullBrand = "DigitalPa";
+  const fullLinks = ["Home", "Services", "Portfolio", "About Us"];
+  const fullButton = "Get Started";
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => setExpanded(true), 500);
+    const timer2 = setTimeout(() => setShowTyping(true), 1200);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!showTyping) return;
+
+    let brandIndex = 0;
+    let buttonIndex = 0;
+    const linkIndexes = [0, 0, 0, 0];
+
+    const interval = setInterval(() => {
+      setContent((prev) => {
+        const updated = { ...prev };
+
+        if (brandIndex <= fullBrand.length) {
+          updated.brand = fullBrand.slice(0, brandIndex);
+          brandIndex++;
+        }
+
+        if (buttonIndex <= fullButton.length) {
+          updated.button = fullButton.slice(0, buttonIndex);
+          buttonIndex++;
+        }
+
+        for (let i = 0; i < fullLinks.length; i++) {
+          if (linkIndexes[i] <= fullLinks[i].length) {
+            updated.links[i] = fullLinks[i].slice(0, linkIndexes[i]);
+            linkIndexes[i]++;
+          }
+        }
+
+        if (
+          brandIndex > fullBrand.length &&
+          buttonIndex > fullButton.length &&
+          linkIndexes.every((val, i) => val > fullLinks[i].length)
+        ) {
+          clearInterval(interval);
+        }
+
+        return updated;
+      });
+    }, 150);
+
+    return () => clearInterval(interval);
+  }, [showTyping]);
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] z-50 px-6 py-4 flex justify-between items-center
-      bg-white/5 text-white backdrop-blur-lg rounded-2xl shadow-xl border border-white/10 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"
+    <motion.nav
+      initial={{
+        width: 64,
+        height: 64,
+        borderRadius: 9999,
+        padding: 0,
+        y: -40,
+      }}
+      animate={{
+        width: expanded ? "90%" : 64,
+        height: expanded ? "auto" : 64,
+        borderRadius: expanded ? 24 : 9999,
+        padding: expanded ? "0.5rem 1.5rem" : 0,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)] overflow-hidden text-white"
     >
-      {/* Logo + Name */}
-      <div className="flex items-center space-x-3">
-        <img
-          src="/images/logo1.png"
-          alt="DigitalPA Logo"
-          className="h-11 w-auto object-contain"
-        />
-        <div className="text-2xl font-extrabold text-white">Digital<span className="text-blue-500 ">Pa</span></div>
-      </div>
+      {!expanded ? (
+        <div className="w-16 h-16 flex items-center justify-center">
+          <img
+            src="/images/logo1.png"
+            alt="DigitalPA Logo"
+            className="h-8 w-8 object-contain"
+          />
+        </div>
+      ) : (
+        <div className="flex justify-between items-center w-full">
+          {/* Left: Logo + Brand */}
+          <div className="flex items-center space-x-3">
+            <img
+              src="/images/logo1.png"
+              alt="DigitalPA Logo"
+              className="h-7 w-auto object-contain"
+            />
+            <span className="text-base font-extrabold text-white">
+              {/* Color Pa only when fully typed */}
+              {content.brand.startsWith("Digital") && content.brand.length > 7 ? (
+                <>
+                  {"Digital"}
+                  <span className="text-blue-500">
+                    {content.brand.slice(7)}
+                  </span>
+                </>
+              ) : (
+                content.brand
+              )}
+            </span>
+          </div>
 
-      {/* Desktop Nav Links */}
-      <div className="hidden md:flex space-x-8 text-white font-medium">
-        <a href="#grow" className="hover:text-blue-400 transition-all">Home</a>
-        <a href="#services" className="hover:text-blue-400 transition-all">Services</a>
-        <a href="#pricing" className="hover:text-blue-400 transition-all">Portfolio</a>
-        <a href="#testimonials" className="hover:text-blue-400 transition-all">About Us</a>
-      </div>
+          {/* Center: Nav Links */}
+          <div className="hidden md:flex space-x-8 text-white font-medium">
+            {content.links.map((link, idx) => (
+              <span key={idx} className="text-sm">
+                {link}
+              </span>
+            ))}
+          </div>
 
-      {/* Desktop CTA Button */}
-      <div className="hidden md:block">
-        <button className="px-6 py-2 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all">
-          Get Started
-        </button>
-      </div>
-
-      {/* Mobile Menu Toggle */}
-      <div className="md:hidden">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-300">
-          <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
-        </button>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      {isMenuOpen && (
-        <div className="absolute top-[72px] left-0 w-full bg-black/80 backdrop-blur-lg rounded-b-2xl px-6 py-4 flex flex-col space-y-4 md:hidden">
-          <a onClick={handleLinkClick} href="#features" className="text-blue-500 hover:text-blue-400 transition-all">Features</a>
-          <a onClick={handleLinkClick} href="#how-it-works" className="text-blue-500 hover:text-blue-400 transition-all">How It Works</a>
-          <a onClick={handleLinkClick} href="#pricing" className="text-blue-500 hover:text-blue-400 transition-all">Pricing</a>
-          <a onClick={handleLinkClick} href="#testimonials" className="text-blue-500 hover:text-blue-400 transition-all">Testimonials</a>
-          <button
-            onClick={handleLinkClick}
-            className="mt-2 px-6 py-2 rounded-full bg-blue-600 text-white font-medium hover:opacity-90 transition-all"
-          >
-            Get Started
-          </button>
+          {/* Right: CTA Button */}
+          <div className="hidden md:block">
+            {content.button && (
+              <button className="px-3 py-1 text-sm rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all">
+                {content.button}
+              </button>
+            )}
+          </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 };
 

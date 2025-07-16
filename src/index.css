@@ -124,3 +124,7 @@ body {
   pointer-events: none;
 }
 
+/* Blue shadow on hover */
+.hover\:shadow-blue-glow:hover {
+  box-shadow: 0 4px 25px rgba(59, 130, 246, 0.4); 
+}
