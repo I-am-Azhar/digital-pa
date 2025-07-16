@@ -4,7 +4,11 @@ import CounterStat from "./CounterStat";
 
 const Grow = () => {
   return (
-    <section id="grow"  className=" scroll py-28 px-6 flex justify-center items-center">
+    <section
+      id="grow"
+      data-lenis-prevent
+      className="scroll py-28 px-6 flex justify-center items-center"
+    >
       <div className="bg-black/40 backdrop-blur-md rounded-3xl p-10 max-w-5xl w-full text-center border border-white/10 shadow-lg">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Let's grow together!

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 
 const HeroSection = () => {
   const words = ["Growth", "Presence", "Journey"];
@@ -11,7 +12,7 @@ const HeroSection = () => {
     const delay = setTimeout(() => {
       setStartTyping(true);
       setDisplayedText("");
-    }, 3000); // Wait 3 seconds before starting typewriter
+    }, 3000);
 
     return () => clearTimeout(delay);
   }, []);
@@ -37,6 +38,7 @@ const HeroSection = () => {
     return () => clearInterval(typeInterval);
   }, [currentWordIndex, startTyping]);
 
+  // ✅ Custom scroll values based on scrollY from Lenis-compatible hook
   const { scrollY } = useScroll();
   const translateY = useTransform(scrollY, [0, 300], [0, 50]);
   const blur = useTransform(scrollY, [0, 300], ["blur(0px)", "blur(3px)"]);
@@ -46,7 +48,7 @@ const HeroSection = () => {
   const iconImage = "w-full h-full object-contain";
 
   return (
-    <section className="relative py-10 px-6 overflow-hidden">
+    <section className="relative py-10 px-6 overflow-hidden" data-lenis-prevent>
       {/* Icons */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -97,30 +99,31 @@ const HeroSection = () => {
           transition={{ duration: 0.6, ease: "easeInOut", delay: 2.5 }}
           className={`${iconWrapper} bottom-10 left-125 w-[80px] h-[80px] rotate-[-10deg]`}
         >
-          <img
-            src="/bg/icons8-email.svg"
-            alt="Email"
-            className={iconImage}
-          />
+          <img src="/bg/icons8-email.svg" alt="Email" className={iconImage} />
         </motion.div>
       </motion.div>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center relative z-10">
+      <div className="py-10 container mx-auto flex flex-col md:flex-row items-center relative z-10">
         {/* Left Section */}
         <div className="pt-15 pl-10 md:w-1/2 mb-12 md:mb-0">
-          <div className="pt-10 flex flex-col md:w-200 items-start space-y-6">
+          <div className="pt-10 flex flex-col md:w-175 items-start space-y-6">
             <h1 className="text-5xl md:text-5xl font-extrabold leading-tight text-white select-text">
               Digital
-              <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">Pa</span>{" "}
+              <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
+                Pa
+              </span>{" "}
               - Your partner in digital{" "}
               <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
                 {displayedText}
-                {startTyping && <span className="animate-pulse select-none">|</span>}
+                {startTyping && (
+                  <span className="animate-pulse select-none">|</span>
+                )}
               </span>
             </h1>
 
             <p className="font-light !text-base md:text-xl text-gray-400 max-w-lg select-text">
-              DigitalPA helps you automate tasks, manage your schedule, and boost productivity with artificial intelligence.
+              DigitalPA helps you automate tasks, manage your schedule, and
+              boost productivity with artificial intelligence.
             </p>
 
             <button className="px-8 py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all">

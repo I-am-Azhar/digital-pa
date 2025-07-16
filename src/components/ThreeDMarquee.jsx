@@ -38,7 +38,10 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
   };
 
   return (
-    <section className={`w-full pb-10 flex justify-center ${className}`}>
+    <section
+      className={`w-full pb-10 flex justify-center ${className}`}
+      data-lenis-prevent
+    >
       {/* 🛠️ Bounded container with max size */}
       <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[750px]">
         <div className="flex w-full h-full justify-center items-center overflow-hidden">
@@ -67,7 +70,7 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
                   return (
                     <div
                       key={`img-${globalIndex}`}
-                      className="relative w-[350px] h-[350px]" // 🛠️ Shrunk image boxes to fit
+                      className="relative w-[350px] h-[350px]"
                     >
                       <motion.img
                         whileHover={{ y: -10 }}

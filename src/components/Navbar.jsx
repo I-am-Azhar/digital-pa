@@ -39,7 +39,7 @@ const Navbar = () => {
       const growSection = document.getElementById("grow");
       if (growSection) {
         const { top } = growSection.getBoundingClientRect();
-        setHideNavbar(bottom <= 0); // hide when scrolled past the top of grow section
+        setHideNavbar(top <= 0); // hide when scrolled past the top of grow section
       }
     };
 
@@ -77,7 +77,7 @@ const Navbar = () => {
             <motion.img
               initial={{ y: -20, opacity: 0 }}
               animate={showContent ? { y: 0, opacity: 1 } : {}}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1 }}
               src="/images/logo1.png"
               alt="DigitalPA Logo"
               className="h-7 w-auto object-contain"
@@ -87,7 +87,7 @@ const Navbar = () => {
             <motion.span
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1 }}
               className="text-base font-semibold tracking-widest text-white"
             >
               Digital<span className="text-blue-500">Pa</span>
@@ -100,7 +100,7 @@ const Navbar = () => {
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             className="hidden md:flex space-x-8 text-white font-medium"
           >
             {content.links.map((linkObj, idx) => (
@@ -120,7 +120,7 @@ const Navbar = () => {
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             className="hidden md:block"
           >
             <button className="px-3 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all">

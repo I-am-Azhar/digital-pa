@@ -2,7 +2,7 @@ import React from "react";
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full">
+    <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full" data-lenis-prevent>
       <div className="max-w-7xl mx-auto text-center space-y-4">
         <p className="font-sm text-sm text-gray-400  uppercase">Our Latest Projects</p>
         <h2 className="text-4xl font-extrabold text-blue-500">Explore our Portfolio</h2>
@@ -16,7 +16,7 @@ const PortfolioSection = () => {
         <div className="flex-1 space-y-6">
           <h3 className="text-2xl font-semibold">Creative Solutions That Make Impact</h3>
           <p className="text-gray-400">
-           From digital marketing and social media marketing to web development and online/offline branding, our portfolio highlights a diverse range of projects that reflect our expertise in building impactful digital experiences.
+            From digital marketing and social media marketing to web development and online/offline branding, our portfolio highlights a diverse range of projects that reflect our expertise in building impactful digital experiences.
           </p>
 
           <div className="grid grid-cols-2 gap-4">
@@ -24,7 +24,7 @@ const PortfolioSection = () => {
               "Digital Marketing",
               "Social Media Marketing",
               "Branding Offline/Online",
-              "Web Development"
+              "Web Development",
             ].map((service, index) => (
               <button
                 key={index}
