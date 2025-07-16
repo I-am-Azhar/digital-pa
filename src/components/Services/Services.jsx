@@ -21,7 +21,7 @@ const serviceCards = [
 
 const Services = () => {
   return (
-    <section id="services" className="pb-24 px-6">
+    <section id="services" className="scroll-mt-24 pb-24 px-6">
       {/* Section Header */}
       <div className="container mx-auto text-center mb-16">
         <h1 className="text-4xl md:text-2xl font-semibold text-blue-400">What we can do?</h1>

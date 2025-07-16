@@ -2,7 +2,7 @@ import React from "react";
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="bg-transperent text-white px-6 py-16 w-full">
+    <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full">
       <div className="max-w-7xl mx-auto text-center space-y-4">
         <p className="font-sm text-sm text-gray-400  uppercase">Our Latest Projects</p>
         <h2 className="text-4xl font-extrabold text-blue-500">Explore our Portfolio</h2>

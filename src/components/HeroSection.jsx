@@ -55,7 +55,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 3 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: 1 }}
           className={`${iconWrapper} top-[250px] right-50 w-[80px] h-[80px] rotate-[10deg]`}
         >
           <img
@@ -68,7 +68,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 3.5 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: 1.5 }}
           className={`${iconWrapper} top-[290px] right-[325px] w-[80px] h-[80px] rotate-[5deg]`}
         >
           <img
@@ -81,7 +81,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 4 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: 2 }}
           className={`${iconWrapper} bottom-65 left-3/5 w-[80px] h-[80px] rotate-[-5deg]`}
         >
           <img
@@ -94,7 +94,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 4.5 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: 2.5 }}
           className={`${iconWrapper} bottom-10 left-125 w-[80px] h-[80px] rotate-[-10deg]`}
         >
           <img
