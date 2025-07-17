@@ -43,10 +43,11 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
       data-lenis-prevent
     >
       {/* 🛠️ Bounded container with max size */}
-      <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[750px]">
+      <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[750px] md:max-h-[500px]">
         <div className="flex w-full h-full justify-center items-center overflow-hidden">
           <div
-            className="relative grid origin-center grid-cols-3 gap-[60px] place-items-center will-change-transform [transform-style:preserve-3d]"
+            className="relative grid origin-center grid-cols-3 gap-[60px] place-items-center will-change-transform [transform-style:preserve-3d]
+                       md:grid-cols-2 md:gap-[30px]"
             style={{
               transform: " scale(1.35) rotateX(55deg) rotateZ(45deg)",
               transformStyle: "preserve-3d",
@@ -70,7 +71,7 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
                   return (
                     <div
                       key={`img-${globalIndex}`}
-                      className="relative w-[350px] h-[350px]"
+                      className="relative w-[350px] h-[350px] md:w-[150px] md:h-[150px]"
                     >
                       <motion.img
                         whileHover={{ y: -10 }}

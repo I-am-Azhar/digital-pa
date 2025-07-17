@@ -83,7 +83,7 @@ const HeroSection = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 2 }}
-          className={`${iconWrapper} bottom-40 md:bottom-65 left-1/2 md:left-3/5 w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[-5deg]`}
+          className={`${iconWrapper} bottom-[90px] md:bottom-[72px] left-[calc(50%+60px)] md:left-[calc(60%+5px)] w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[-5deg]`}
         >
           <img
             src="/bg/icons8-youtube.svg"
@@ -133,8 +133,8 @@ const HeroSection = () => {
         {/* Right Section */}
         <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
           <div className="relative w-full max-w-md">
-            <div className="absolute -top-8 -left-8 md:-top-10 md:-left-10 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full opacity-30" />
-            <div className="absolute -bottom-8 -right-8 md:-bottom-10 md:-right-10 w-24 h-24 md:w-32 md:h-32 bg-blue-600 rounded-full opacity-30" />
+            <div className="absolute hidden md:block -top-8 -left-8 md:-top-10 md:-left-10 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full opacity-30" />
+            <div className="absolute hidden md:block -bottom-8 -right-8 md:-bottom-10 md:-right-10 w-24 h-24 md:w-32 md:h-32 bg-blue-600 rounded-full opacity-30" />
           </div>
         </div>
       </div>

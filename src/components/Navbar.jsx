@@ -131,22 +131,48 @@ const Navbar = () => {
 
       {/* Mobile Navbar */}
       <motion.div
-        className="fixed top-4 right-4 z-50 md:hidden"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.3 }}
+        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+        initial={{ 
+          width: "90%",
+          height: 48,
+          borderRadius: 24,
+          y: 0
+        }}
+        animate={{
+          y: hideNavbar ? -100 : 0,
+          width: hideNavbar ? 48 : "90%",
+          height: hideNavbar ? 48 : 48,
+          borderRadius: hideNavbar ? 9999 : 24,
+        }}
+        transition={{
+          duration: 0.5,
+          ease: [0.25, 0.1, 0.25, 1],
+        }}
       >
         <motion.button
-          className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 flex items-center justify-center"
+          className={`w-full h-full ${hideNavbar ? 'rounded-full' : 'rounded-2xl'} bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 flex items-center justify-center`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <img
-            src="/images/logo1.png"
-            alt="DigitalPA Logo"
-            className="h-7 w-7 object-contain"
-          />
+          {hideNavbar ? (
+            <img
+              src="/images/logo1.png"
+              alt="DigitalPA Logo"
+              className="h-7 w-7 object-contain"
+            />
+          ) : (
+            <div className="flex items-center justify-between w-full px-4">
+              <img
+                src="/images/logo1.png"
+                alt="DigitalPA Logo"
+                className="h-7 w-7 object-contain"
+              />
+              <span className="text-white font-medium text-sm">
+                Menu
+              </span>
+            </div>
+          )}
         </motion.button>
 
         <AnimatePresence>
