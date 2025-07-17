@@ -7,6 +7,7 @@ import Grow from "./components/Grow/grow";
 import Services from "./components/Services/Services";
 import PortfolioSection from "./components/PortfolioSection";
 import ThreeDMarquee from "./components/ThreeDMarquee";
+import PortfolioIntroSection from "./components/ui/PortfolioIntroSection"
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
       <HeroSection />
       <Grow />
       <Services />
+      <PortfolioIntroSection/>
       <PortfolioSection />
       <ThreeDMarquee />
     </div>

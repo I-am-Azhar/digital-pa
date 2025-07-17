@@ -1,17 +1,10 @@
 import React from "react";
+import { FlickeringGrid } from "./ui/flickering-grid";
 
 const PortfolioSection = () => {
   return (
     <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full" data-lenis-prevent>
-      <div className="max-w-7xl mx-auto text-center space-y-4">
-        <p className="font-sm text-sm text-gray-400  uppercase">Our Latest Projects</p>
-        <h2 className="text-4xl font-extrabold text-blue-500">Explore our Portfolio</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Explore our innovative strategies and creative solutions in digital marketing, branding, and web development each project reflecting our dedication to excellence and driving business success in the digital world.
-        </p>
-      </div>
-
-      <div className="mt-16 bg-black/40 rounded-2xl p-8 flex flex-col lg:flex-row justify-between gap-8">
+      <div className="bg-black/40 rounded-2xl p-8 flex flex-col lg:flex-row justify-between gap-8">
         {/* Left Side */}
         <div className="flex-1 space-y-6">
           <h3 className="text-2xl font-semibold">Creative Solutions That Make Impact</h3>
