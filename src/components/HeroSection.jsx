@@ -38,17 +38,16 @@ const HeroSection = () => {
     return () => clearInterval(typeInterval);
   }, [currentWordIndex, startTyping]);
 
-  // ✅ Custom scroll values based on scrollY from Lenis-compatible hook
   const { scrollY } = useScroll();
   const translateY = useTransform(scrollY, [0, 300], [0, 50]);
   const blur = useTransform(scrollY, [0, 300], ["blur(0px)", "blur(3px)"]);
 
   const iconWrapper =
-    "absolute rounded-full p-3 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 shadow-xl glossy-icon pointer-events-none";
+    "absolute rounded-full p-2 md:p-3 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 shadow-xl glossy-icon pointer-events-none";
   const iconImage = "w-full h-full object-contain";
 
   return (
-    <section className="relative py-10 px-6 overflow-hidden" data-lenis-prevent>
+    <section className="relative py-10 px-4 md:px-6 overflow-hidden" data-lenis-prevent>
       {/* Icons */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -58,7 +57,7 @@ const HeroSection = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 1 }}
-          className={`${iconWrapper} top-[250px] right-50 w-[80px] h-[80px] rotate-[10deg]`}
+          className={`${iconWrapper} top-[150px] md:top-[250px] right-10 md:right-50 w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[10deg]`}
         >
           <img
             src="/bg/icons8-instagram-logo.svg"
@@ -71,7 +70,7 @@ const HeroSection = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 1.5 }}
-          className={`${iconWrapper} top-[290px] right-[325px] w-[80px] h-[80px] rotate-[5deg]`}
+          className={`${iconWrapper} bottom-20 md:top-[290px] right-[200px] md:right-[325px] w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[5deg]`}
         >
           <img
             src="/bg/icons8-facebook.svg"
@@ -84,7 +83,7 @@ const HeroSection = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 2 }}
-          className={`${iconWrapper} bottom-65 left-3/5 w-[80px] h-[80px] rotate-[-5deg]`}
+          className={`${iconWrapper} bottom-40 md:bottom-65 left-1/2 md:left-3/5 w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[-5deg]`}
         >
           <img
             src="/bg/icons8-youtube.svg"
@@ -97,7 +96,7 @@ const HeroSection = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 2.5 }}
-          className={`${iconWrapper} bottom-10 left-125 w-[80px] h-[80px] rotate-[-10deg]`}
+          className={`${iconWrapper} bottom-10 left-20 md:left-125 w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[-10deg]`}
         >
           <img src="/bg/icons8-email.svg" alt="Email" className={iconImage} />
         </motion.div>
@@ -105,14 +104,13 @@ const HeroSection = () => {
 
       <div className="py-10 container mx-auto flex flex-col md:flex-row items-center relative z-10">
         {/* Left Section */}
-        <div className="pt-15 pl-10 md:w-1/2 mb-12 md:mb-0">
-          <div className="pt-10 flex flex-col md:w-175 items-start space-y-6">
-            <h1 className="text-5xl md:text-5xl font-extrabold leading-tight text-white select-text">
+        <div className="pt-10 md:pt-15 pl-4 md:pl-10 md:w-1/2 mb-8 md:mb-0">
+          <div className="flex flex-col md:w-175 items-start space-y-4 md:space-y-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-white select-text">
               Digital
               <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
                 Pa
-              </span>{" "}
-              - Your partner in digital{" "}
+              </span> - Your partner in digital{' '}
               <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
                 {displayedText}
                 {startTyping && (
@@ -121,22 +119,22 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="font-light !text-base md:text-xl text-gray-400 max-w-lg select-text">
+            <p className="font-light text-sm md:text-base md:text-xl text-gray-400 max-w-md md:max-w-lg select-text">
               DigitalPA helps you automate tasks, manage your schedule, and
               boost productivity with artificial intelligence.
             </p>
 
-            <button className="px-8 py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all">
+            <button className="px-4 py-1.5 md:px-8 md:py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm md:text-base">
               Contact Us
             </button>
           </div>
         </div>
 
         {/* Right Section */}
-        <div className="md:w-1/2 flex justify-center">
+        <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
           <div className="relative w-full max-w-md">
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-400 rounded-full opacity-30" />
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-600 rounded-full opacity-30" />
+            <div className="absolute -top-8 -left-8 md:-top-10 md:-left-10 w-24 h-24 md:w-32 md:h-32 bg-blue-400 rounded-full opacity-30" />
+            <div className="absolute -bottom-8 -right-8 md:-bottom-10 md:-right-10 w-24 h-24 md:w-32 md:h-32 bg-blue-600 rounded-full opacity-30" />
           </div>
         </div>
       </div>

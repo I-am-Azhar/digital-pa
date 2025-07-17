@@ -7,7 +7,8 @@ import Grow from "./components/Grow/grow";
 import Services from "./components/Services/Services";
 import PortfolioSection from "./components/PortfolioSection";
 import ThreeDMarquee from "./components/ThreeDMarquee";
-import PortfolioIntroSection from "./components/ui/PortfolioIntroSection"
+import PortfolioIntroSection from "./components/ui/PortfolioIntroSection";
+import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
       <PortfolioIntroSection/>
       <PortfolioSection />
       <ThreeDMarquee />
+      <Footer />
     </div>
   );
 }
