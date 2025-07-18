@@ -35,15 +35,49 @@ const PortfolioSection = () => {
 
         {/* Right Side: Placeholder Grid - Hidden on mobile */}
         <div className="flex-1 grid grid-cols-2 gap-4 hidden md:grid">
-          {Array.from({ length: 4 }).map((_, i) => (
+          {[
+            {
+              title: "Digital Marketing",
+              image: "/icons/digital-marketing.png",
+            },
+            {
+              title: "Social Media Marketing",
+              image: "/icons/social-media.png",
+            },
+            {
+              title: "Branding Offline/Online",
+              image: "/icons/branding.png",
+            },
+            {
+              title: "Web Development",
+              image: "/icons/web-development.png",
+            },
+          ].map(({ title, image }, i) => (
             <div
               key={i}
-              className="bg-black/30 md:block rounded-xl p-4 space-y-2 "
+              className="bg-black/30 md:block rounded-xl p-4 space-y-2 
+                        transition-all duration-300 ease-out 
+                        hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30
+                        group relative overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-full bg-blue-500"></div>
-              <div className="h-3 w-3/4 bg-blue-400 rounded"></div>
-              <div className="h-3 w-full bg-gray-600 rounded"></div>
-              <div className="h-3 w-5/6 bg-gray-600 rounded"></div>
+              <div className="absolute -inset-[1px] bg-gradient-to-br from-blue-500/10 to-transparent 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+              <img src={image} alt={title} className="w-12 h-12 rounded-full object-contain invert" />
+              <div className="w-3/4 text-blue-400 text-sm font-medium truncate">
+                {title}
+              </div>
+              <div className="w-full text-gray-400 text-xs truncate">
+                {title === "Digital Marketing" && "• SEO & PPC campaigns"}
+                {title === "Social Media Marketing" && "• Content strategy & engagement"}
+                {title === "Branding Offline/Online" && "• Visual identity & positioning"}
+                {title === "Web Development" && "• Responsive & fast websites"}
+              </div>
+              <div className="w-5/6 text-gray-400 text-xs truncate">
+                {title === "Digital Marketing" && "• Analytics & optimization"}
+                {title === "Social Media Marketing" && "• Community management"}
+                {title === "Branding Offline/Online" && "• Brand guidelines"}
+                {title === "Web Development" && "• Modern frameworks"}
+              </div>
             </div>
           ))}
         </div>

@@ -17,9 +17,9 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Home</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Services</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Portfolio</a></li>
+              <li><a href="grow" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Home</a></li>
+              <li><a href="services" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Services</a></li>
+              <li><a href="portfolio" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Portfolio</a></li>
               <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Contact</a></li>
             </ul>
           </div>

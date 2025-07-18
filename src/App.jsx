@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 
 import Navbar from "./components/Navbar";
@@ -11,6 +11,8 @@ import PortfolioIntroSection from "./components/ui/PortfolioIntroSection";
 import Footer from "./components/Footer";
 
 function App() {
+  const [showContactForm, setShowContactForm] = useState(false);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -32,8 +34,11 @@ function App() {
 
   return (
     <div className="bg-[#13141f] text-white min-h-screen">
-      <Navbar />
-      <HeroSection />
+      {!showContactForm && <Navbar setShowContactForm={setShowContactForm} />}
+      <HeroSection 
+        showContactForm={showContactForm}
+        setShowContactForm={setShowContactForm}
+      />
       <Grow />
       <Services />
       <PortfolioIntroSection/>

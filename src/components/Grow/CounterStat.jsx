@@ -34,22 +34,25 @@ const CounterStat = ({ target, label }) => {
         <motion.h2
           className="text-4xl md:text-5xl font-bold text-blue-500 z-10 flex items-center relative"
           initial={{ scale: 1 }}
-          animate={done ? { scale: [1, 1.4, 0.9, 1] } : {}}
+          animate={done ? { 
+            scale: [1, 1.4, 0.9, 1],
+            textShadow: [
+              '0 0 0px rgba(59, 130, 246, 0)',
+              '0 0 10px rgba(59, 130, 246, 0.8)',
+              '0 0 20px rgba(59, 130, 246, 0.5)',
+              '0 0 10px rgba(59, 130, 246, 0.3)'
+            ]
+          } : {}}
           transition={{ duration: 0.5 }}
         >
           {count}
           <span className="relative">
-            +
             {done && (
-              <div className="shooting-star absolute -top-4 left-1/2 -translate-x-1/2" />
+              <span className="shooting-star absolute inset-0" />
             )}
+            +
           </span>
         </motion.h2>
-
-        {/* Glow behind number only */}
-        {done && (
-          <div className="absolute w-20 h-20 bg-blue-500/20 blur-2xl rounded-full -z-10 top-4 left-1/2 -translate-x-1/2" />
-        )}
       </div>
 
       <p className="text-white mt-2 text-sm md:text-lg">{label}</p>

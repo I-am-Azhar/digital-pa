@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
+import ContactForm from "./ContactForm";
 
 const HeroSection = () => {
+  const [showContactForm, setShowContactForm] = useState(false);
   const words = ["Growth", "Presence", "Journey"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("Success");
@@ -124,9 +126,17 @@ const HeroSection = () => {
               boost productivity with artificial intelligence.
             </p>
 
-            <button className="px-4 py-1.5 md:px-8 md:py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm md:text-base">
-              Contact Us 
+            <button 
+              onClick={() => setShowContactForm(true)}
+              className="px-4 py-1.5 md:px-8 md:py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm md:text-base"
+            >
+              Contact Us
             </button>
+            {showContactForm && (
+              <ContactForm 
+                onClose={() => setShowContactForm(false)} 
+              />
+            )}
           </div>
         </div>
 
