@@ -125,7 +125,7 @@ const HeroSection = () => {
             </p>
 
             <button className="px-4 py-1.5 md:px-8 md:py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm md:text-base">
-              Contact Us
+              Contact Us 
             </button>
           </div>
         </div>

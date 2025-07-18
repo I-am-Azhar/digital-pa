@@ -1,9 +1,5 @@
 import React from "react";
 
-
-  
-
-
 const serviceCards = [
   {
     title: "Digital Marketing",
@@ -42,7 +38,7 @@ const Services = () => {
               key={title}
               className="bg-[#0f172a] rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center transition duration-300 hover:scale-[1.02]"
             >
-              <img src={image} alt={title} className="w-24 h-24 object-contain mb-6 invert" />
+              <img src={image} alt={title} className="w-16 h-16 md:w-24 md:h-24 object-contain mb-6 invert" />
               <h3 className="text-md font-semibold text-blue-500 text-center">{title}</h3>
             </div>
           ))}
@@ -58,7 +54,7 @@ const Services = () => {
               key={title}
               className="bg-[#0f172a] rounded-2xl shadow-2xl p-10 flex flex-col items-center justify-center transition duration-300 hover:scale-[1.02]"
             >
-              <img src={image} alt={title} className="w-24 h-24 object-contain mb-6 invert" />
+              <img src={image} alt={title} className="w-16 h-16 md:w-24 md:h-24 object-contain mb-6 invert" />
               <h3 className="text-md font-semibold text-blue-500 text-center">{title}</h3>
             </div>
           ))}

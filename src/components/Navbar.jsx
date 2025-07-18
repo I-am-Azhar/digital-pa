@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -35,7 +36,12 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    const handleScroll = ({ scroll }) => {
       const growSection = document.getElementById("grow");
       if (growSection) {
         const { top } = growSection.getBoundingClientRect();
@@ -43,8 +49,18 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    lenis.on('scroll', handleScroll);
+    
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.off('scroll', handleScroll);
+      lenis.destroy();
+    };
   }, []);
 
   return (
@@ -145,8 +161,8 @@ const Navbar = () => {
           borderRadius: hideNavbar ? 9999 : 24,
         }}
         transition={{
-          duration: 0.5,
-          ease: [0.25, 0.1, 0.25, 1],
+          duration: 0.8,
+          ease: [0.32, 0.72, 0, 1],
         }}
       >
         <motion.button
@@ -163,20 +179,25 @@ const Navbar = () => {
             />
           ) : (
             <div className="flex items-center justify-between w-full px-4">
-              <img
-                src="/images/logo1.png"
-                alt="DigitalPA Logo"
-                className="h-7 w-7 object-contain"
-              />
-              <span className="text-white font-medium text-sm">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/images/logo1.png"
+                  alt="DigitalPA Logo"
+                  className="h-7 w-7 object-contain"
+                />
+                <span className="text-base font-semibold text-white tracking-wider">
+                  Digital<span className="text-blue-500">Pa</span>
+                </span>
+              </div>
+              <button className="px-4 py-1.5 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm">
                 Menu
-              </span>
+              </button>
             </div>
           )}
         </motion.button>
 
         <AnimatePresence>
-          {isMobileMenuOpen && (
+          {isMobileMenuOpen && !hideNavbar && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}

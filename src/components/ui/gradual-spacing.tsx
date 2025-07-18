@@ -1,8 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import type { Variant, Variants } from "framer-motion";
 
-function cn(...classes: (string | false | null | undefined)[]) {
+function cn(...classes: (string | boolean | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -20,9 +22,9 @@ function GradualSpacing({
   duration = 0.5,
   delayMultiple = 0.04,
   framerProps = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  },
+    hidden: { opacity: 0, x: -20 } as Variant,
+    visible: { opacity: 1, x: 0 } as Variant,
+  } satisfies Variants,
   className,
 }: GradualSpacingProps) {
   return (

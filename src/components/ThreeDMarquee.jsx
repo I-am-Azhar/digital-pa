@@ -23,7 +23,7 @@ const images = [
 
 const ThreeDMarquee = ({ className = "", onImageClick }) => {
   const columns = 3;
-  const rows = 5;
+  const rows = 4;
   const groupSize = Math.ceil(images.length / columns);
   const imageGroups = Array.from({ length: columns }, (_, index) =>
     images.slice(index * groupSize, (index + 1) * groupSize)
@@ -43,16 +43,23 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
       data-lenis-prevent
     >
       {/* 🛠️ Bounded container with max size */}
-      <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[750px] md:max-h-[500px]">
+      <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[550px] sm:max-h-[550px] md:max-h-[750px] ">
         <div className="flex w-full h-full justify-center items-center overflow-hidden">
-          <div
-            className="relative grid origin-center grid-cols-3 gap-[60px] place-items-center will-change-transform [transform-style:preserve-3d]
-                       md:grid-cols-2 md:gap-[30px]"
-            style={{
-              transform: " scale(1.35) rotateX(55deg) rotateZ(45deg)",
-              transformStyle: "preserve-3d",
-            }}
-          >
+            <div
+              className="relative grid origin-center grid-cols-3 md:gap-[60px] gap-[180px] place-items-center will-change-transform [transform-style:preserve-3d]"
+              style={{
+                transform: " scale(1.35) rotateX(55deg) rotateZ(45deg)",
+                "@media (max-width: 768px)": {
+                  transform: "scale(1.1) rotateX(55deg) rotateZ(45deg)",
+                  gap: "40px"
+                },
+                "@media (max-width: 640px)": {
+                  transform: "scale(0.9) rotateX(55deg) rotateZ(45deg)",
+                  gap: "60px"
+                },
+                transformStyle: "preserve-3d",
+              }}
+            >
             {imageGroups.map((group, colIdx) => (
               <motion.div
                 key={`column-${colIdx}`}
@@ -62,16 +69,16 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
                   repeat: Infinity,
                   ease: "linear",
                 }}
-                className="flex flex-col gap-[30px]"
+                className="flex flex-col gap-[40px] md:gap-[40px] sm:gap-[40px]"
               >
                 {group.slice(0, rows).map((image, imgIdx) => {
                   const globalIndex = colIdx * groupSize + imgIdx;
                   const isClickable = image.href || onImageClick;
 
                   return (
-                    <div
+                      <div
                       key={`img-${globalIndex}`}
-                      className="relative w-[350px] h-[350px] md:w-[150px] md:h-[150px]"
+                      className="relative w-[150px] h-[150px] md:w-[250px] md:h-[250px] sm:w-[150px] sm:h-[150px]"
                     >
                       <motion.img
                         whileHover={{ y: -10 }}
