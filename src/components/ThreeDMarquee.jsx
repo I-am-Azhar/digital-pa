@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import Particles from "./bg/Particles";
 
 // ✅ Define images directly here
 const images = [
@@ -39,26 +40,30 @@ const ThreeDMarquee = ({ className = "", onImageClick }) => {
 
   return (
     <section
-      className={`w-full pb-10 flex justify-center ${className}`}
+      className={`w-full pb-10 flex justify-center ${className} relative`}
       data-lenis-prevent
     >
+      {/* Particles Background */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.4, zIndex: 0 }}>
+        <Particles
+          particleColors={['#ffffff', '#ffffff', '#e5e7eb']}
+          particleCount={90}
+          particleSpread={8}
+          speed={0.06}
+          particleBaseSize={50}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.4}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+      
       {/* 🛠️ Bounded container with max size */}
-      <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[550px] sm:max-h-[550px] md:max-h-[750px] ">
+      <div className="bg-black/40 rounded-3xl shadow-2xl p-4 overflow-hidden w-[95vw] max-w-[2000px] max-h-[550px] sm:max-h-[550px] md:max-h-[750px] relative z-10">
         <div className="flex w-full h-full justify-center items-center overflow-hidden">
             <div
-              className="relative grid origin-center grid-cols-3 md:gap-[60px] gap-[180px] place-items-center will-change-transform [transform-style:preserve-3d]"
-              style={{
-                transform: " scale(1.35) rotateX(55deg) rotateZ(45deg)",
-                "@media (max-width: 768px)": {
-                  transform: "scale(1.1) rotateX(55deg) rotateZ(45deg)",
-                  gap: "40px"
-                },
-                "@media (max-width: 640px)": {
-                  transform: "scale(0.9) rotateX(55deg) rotateZ(45deg)",
-                  gap: "60px"
-                },
-                transformStyle: "preserve-3d",
-              }}
+              className="relative grid origin-center grid-cols-3 place-items-center will-change-transform [transform-style:preserve-3d] [transform:rotateX(55deg)_rotateZ(45deg)] 
+                         scale-180 gap-[110px] sm:scale-110 sm:gap-[40px] md:scale-150 md:gap-[80px] lg:gap-[120px]"
             >
             {imageGroups.map((group, colIdx) => (
               <motion.div

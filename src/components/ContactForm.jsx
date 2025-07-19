@@ -80,13 +80,13 @@ const ContactForm = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
       <div 
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm cursor-target"
         onClick={onClose}
       />
       <div className="relative w-full max-w-md bg-white rounded-xl shadow-2xl z-[100000] p-6 mx-auto">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors"
+          className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-target"
           aria-label="Close"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,7 +111,7 @@ const ContactForm = ({ onClose }) => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black cursor-target`}
             />
             {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
           </div>
@@ -126,7 +126,7 @@ const ContactForm = ({ onClose }) => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black cursor-target`}
             />
             {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
           </div>
@@ -140,7 +140,7 @@ const ContactForm = ({ onClose }) => {
               name="service"
               value={formData.service}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.service ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.service ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black cursor-target`}
             >
               <option value="">Select a service</option>
               {services.map((service, index) => (
@@ -160,7 +160,7 @@ const ContactForm = ({ onClose }) => {
               rows="4"
               value={formData.message}
               onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black cursor-target`}
             />
             {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
           </div>
@@ -169,7 +169,7 @@ const ContactForm = ({ onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed cursor-target"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

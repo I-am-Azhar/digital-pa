@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import ContactForm from "./ContactForm";
+import DarkVeil from "./bg/DarkWave";
+import { useMediaQuery } from "react-responsive";
+import Magnet from "./animations/Magnet";
+import Particles from "./bg/Particles";
 
 const HeroSection = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const words = ["Growth", "Presence", "Journey"];
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("Success");
   const [startTyping, setStartTyping] = useState(false);
@@ -49,7 +54,30 @@ const HeroSection = () => {
   const iconImage = "w-full h-full object-contain";
 
   return (
-    <section className="relative py-10 px-4 md:px-6 overflow-hidden" data-lenis-prevent>
+    <section
+      className="relative py-10 px-4 md:px-6 overflow-hidden rounded-2xl"
+      data-lenis-prevent
+    >
+      {/* Particles Background */}
+      <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden pointer-events-none" style={{ opacity: 0.6, zIndex: 5 }}>
+        <Particles
+          particleColors={['#ffffff', '#ffffff', '#e5e7eb']}
+          particleCount={100}
+          particleSpread={8}
+          speed={0.05}
+          particleBaseSize={80}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.5}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+      
+      {!isMobile && (
+        <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden pointer-events-none" style={{ opacity: 0.3, zIndex: 10 }}>
+          <DarkVeil resolutionScale={1} />
+        </div>
+      )}
       {/* Icons */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -126,12 +154,22 @@ const HeroSection = () => {
               boost productivity with artificial intelligence.
             </p>
 
-            <button 
-              onClick={() => setShowContactForm(true)}
-              className="px-4 py-1.5 md:px-8 md:py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm md:text-base"
+            <Magnet
+              magnetStrength={3}
+              padding={50}
+              wrapperClassName="inline-block"
+              innerClassName="inline-block"
             >
-              Contact Us
-            </button>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => setShowContactForm(true)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setShowContactForm(true)}
+                className="px-4 py-1.5 md:px-8 md:py-3 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm md:text-base cursor-pointer cursor-target"
+              >
+                Contact Us
+              </div>
+            </Magnet>
             {showContactForm && (
               <ContactForm 
                 onClose={() => setShowContactForm(false)} 

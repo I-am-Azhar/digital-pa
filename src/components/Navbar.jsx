@@ -123,7 +123,7 @@ const Navbar = () => {
                 <a
                   key={idx}
                   href={linkObj.url}
-                  className="text-sm hover:underline hover:underline-offset-4 hover:decoration-blue-500 transition-all"
+                  className="text-sm hover:underline hover:underline-offset-4 hover:decoration-blue-500 transition-all cursor-target"
                 >
                   {linkObj.label}
                 </a>
@@ -137,7 +137,7 @@ const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <button className="px-3 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all">
+              <button className="px-3 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all cursor-target">
                 {content.button}
               </button>
             </motion.div>
@@ -165,8 +165,8 @@ const Navbar = () => {
           ease: [0.32, 0.72, 0, 1],
         }}
       >
-        <motion.button
-          className={`w-full h-full ${hideNavbar ? 'rounded-full' : 'rounded-2xl'} bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 flex items-center justify-center`}
+        <motion.div
+          className={`w-full h-full ${hideNavbar ? 'rounded-full' : 'rounded-2xl'} bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 flex items-center justify-center cursor-target`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -189,12 +189,12 @@ const Navbar = () => {
                   Digital<span className="text-blue-500">Pa</span>
                 </span>
               </div>
-              <button className="px-4 py-1.5 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm">
+              <div className="px-4 py-1.5 rounded-full bg-blue-600 text-white font-semibold hover:opacity-90 transition-all text-sm cursor-target">
                 Menu
-              </button>
+              </div>
             </div>
           )}
-        </motion.button>
+        </motion.div>
 
         <AnimatePresence>
           {isMobileMenuOpen && !hideNavbar && (
@@ -210,14 +210,14 @@ const Navbar = () => {
                   <a
                     key={idx}
                     href={linkObj.url}
-                    className="px-4 py-2 text-white hover:bg-white/10 transition-all text-sm"
+                    className="px-4 py-2 text-white hover:bg-white/10 transition-all text-sm cursor-target"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {linkObj.label}
                   </a>
                 ))}
                 <button 
-                  className="mx-4 mt-2 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all"
+                  className="mx-4 mt-2 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all cursor-target"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {content.button}

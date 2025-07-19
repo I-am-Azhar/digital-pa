@@ -17,10 +17,10 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="grow" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Home</a></li>
-              <li><a href="services" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Services</a></li>
-              <li><a href="portfolio" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Portfolio</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Contact</a></li>
+              <li><a href="grow" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Home</a></li>
+              <li><a href="services" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Services</a></li>
+              <li><a href="portfolio" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Portfolio</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Contact</a></li>
             </ul>
           </div>
 
@@ -28,10 +28,10 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Digital Marketing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Web Development</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Social Media</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1">Branding</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Digital Marketing</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Web Development</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Social Media</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Branding</a></li>
             </ul>
           </div>
 
@@ -42,13 +42,13 @@ const Footer = () => {
               <p className="text-gray-400">Email: info@digitalpa.com</p>
               <p className="text-gray-400">Phone: +1 234 567 890</p>
               <div className="flex space-x-4 mt-4">
-                <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110">
+                <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110 cursor-target">
                   <img src="/bg/icons8-facebook.svg" alt="Facebook" className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110">
+                <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110 cursor-target">
                   <img src="/bg/icons8-instagram-logo.svg" alt="Instagram" className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110">
+                <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-110 cursor-target">
                   <img src="/bg/icons8-youtube.svg" alt="YouTube" className="w-6 h-6" />
                 </a>
               </div>

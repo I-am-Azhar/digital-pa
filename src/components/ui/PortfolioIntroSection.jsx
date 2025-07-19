@@ -3,6 +3,7 @@ import { FlickeringGrid } from "./flickering-grid";
 import { GradualSpacing } from "./gradual-spacing";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Particles from "../bg/Particles";
 
 const PortfolioIntroSection = () => {
   const [ref, inView] = useInView({
@@ -12,8 +13,23 @@ const PortfolioIntroSection = () => {
 
   return (
     <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-lg min-h-[80px] md:min-h-[25px]">
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-0" style={{ opacity: 0.15 }}>
+        <Particles
+          particleColors={['#0ea5e9', '#ffffff']}
+          particleCount={80}
+          particleSpread={6}
+          speed={0.06}
+          particleBaseSize={40}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.4}
+          alphaParticles={true}
+          disableRotation={false}
+        />
+      </div>
+      
       {/* Background Grid */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-1">
         <FlickeringGrid
           squareSize={4}
           gridGap={6}

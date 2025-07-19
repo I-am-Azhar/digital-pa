@@ -9,9 +9,22 @@ import PortfolioSection from "./components/PortfolioSection";
 import ThreeDMarquee from "./components/ThreeDMarquee";
 import PortfolioIntroSection from "./components/ui/PortfolioIntroSection";
 import Footer from "./components/Footer";
+import TargetCursor from "./components/animations/TargetCursor";
 
 function App() {
   const [showContactForm, setShowContactForm] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -34,6 +47,13 @@ function App() {
 
   return (
     <div className="bg-[#13141f] text-white min-h-screen">
+      {!isMobile && (
+        <TargetCursor 
+          targetSelector=".cursor-target, button, a, [role='button'], .glare-hover, .service-card"
+          spinDuration={2}
+          hideDefaultCursor={true}
+        />
+      )}
       {!showContactForm && <Navbar setShowContactForm={setShowContactForm} />}
       <HeroSection 
         showContactForm={showContactForm}

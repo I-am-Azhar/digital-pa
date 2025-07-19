@@ -1,10 +1,26 @@
 import React from "react";
 import { FlickeringGrid } from "./ui/flickering-grid";
+import Particles from "./bg/Particles";
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full" data-lenis-prevent>
-      <div className="bg-black/40 rounded-2xl p-8 flex flex-col lg:flex-row justify-between gap-8">
+    <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full relative" data-lenis-prevent>
+      {/* Particles Background */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.5, zIndex: 0 }}>
+        <Particles
+          particleColors={['#ffffff', '#ffffff', '#f3f4f6']}
+          particleCount={120}
+          particleSpread={10}
+          speed={0.07}
+          particleBaseSize={70}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.6}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+      
+      <div className="bg-black/40 rounded-2xl p-8 flex flex-col lg:flex-row justify-between gap-8 relative z-10">
         {/* Left Side */}
         <div className="flex-1 space-y-6">
           <h3 className="text-2xl font-semibold">Creative Solutions That Make Impact</h3>
