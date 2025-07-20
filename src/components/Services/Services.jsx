@@ -1,6 +1,8 @@
 import React from "react";
+import { motion, useInView } from "framer-motion";
 import GlareHover from "../animations/GlareHover";
 import Particles from "../bg/Particles";
+import DecryptedText from "../buttons/shinytxt";
 
 const serviceCards = [
   {
@@ -22,6 +24,9 @@ const serviceCards = [
 ];
 
 const Services = () => {
+  const headerRef = React.useRef(null);
+  const isInView = useInView(headerRef, { once: false, threshold: 0.3 });
+
   return (
     <section id="services" className="relative scroll-mt-24 pb-24 px-6">
       {/* Particles Background */}
@@ -40,10 +45,28 @@ const Services = () => {
       </div>
 
       {/* Section Header */}
-      <div className="container mx-auto text-center mb-16 relative z-10">
-        <h1 className="text-xl md:text-2xl font-semibold text-blue-400">What we can do?</h1>
+      <motion.div 
+        ref={headerRef}
+        className="container mx-auto text-center mb-16 relative z-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h1 className="text-xl md:text-2xl font-semibold text-blue-400">
+          <DecryptedText
+            text="What we can do?"
+            speed={80}
+            maxIterations={8}
+            sequential={true}
+            revealDirection="start"
+            useOriginalCharsOnly={true}
+            animateOn="view"
+            className="text-blue-400"
+            encryptedClassName="text-blue-400/30"
+          />
+        </h1>
         <p className="font-bold text-2xl md:text-3xl text-light/60">Services we can help you with</p>
-      </div>
+      </motion.div>
 
       {/* Cards in 2x2 Grid with Divider */}
       <div className="max-w-6xl mx-auto space-y-6 md:space-y-12 relative z-10">

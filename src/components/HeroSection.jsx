@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
-import ContactForm from "./ContactForm";
 import DarkVeil from "./bg/DarkWave";
 import { useMediaQuery } from "react-responsive";
 import Magnet from "./animations/Magnet";
 import Particles from "./bg/Particles";
 
-const HeroSection = () => {
-  const [showContactForm, setShowContactForm] = useState(false);
+const HeroSection = ({ showContactForm, setShowContactForm }) => {
   const words = ["Growth", "Presence", "Journey"];
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -57,6 +55,7 @@ const HeroSection = () => {
     <section
       className="relative py-10 px-4 md:px-6 overflow-hidden rounded-2xl"
       data-lenis-prevent
+      id="herosection"
     >
       {/* Particles Background */}
       <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden pointer-events-none" style={{ opacity: 0.6, zIndex: 5 }}>
@@ -86,7 +85,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 1 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: isMobile ? 0 : 1 }}
           className={`${iconWrapper} top-[150px] md:top-[250px] right-10 md:right-50 w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[10deg]`}
         >
           <img
@@ -99,7 +98,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 1.5 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: isMobile ? 0.3 : 1.5 }}
           className={`${iconWrapper} bottom-20 md:top-[290px] right-[200px] md:right-[325px] w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[5deg]`}
         >
           <img
@@ -112,7 +111,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 2 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: isMobile ? 0.6 : 2 }}
           className={`${iconWrapper} bottom-[90px] md:bottom-[72px] left-[calc(50%+60px)] md:left-[calc(60%+5px)] w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[-5deg]`}
         >
           <img
@@ -125,7 +124,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 2.5 }}
+          transition={{ duration: 0.6, ease: "easeInOut", delay: isMobile ? 0.9 : 2.5 }}
           className={`${iconWrapper} bottom-10 left-20 md:left-125 w-[50px] h-[50px] md:w-[80px] md:h-[80px] rotate-[-10deg]`}
         >
           <img src="/bg/icons8-email.svg" alt="Email" className={iconImage} />
@@ -170,11 +169,6 @@ const HeroSection = () => {
                 Contact Us
               </div>
             </Magnet>
-            {showContactForm && (
-              <ContactForm 
-                onClose={() => setShowContactForm(false)} 
-              />
-            )}
           </div>
         </div>
 

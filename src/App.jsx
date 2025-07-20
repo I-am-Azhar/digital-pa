@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
+import { createPortal } from "react-dom";
 
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -10,6 +11,8 @@ import ThreeDMarquee from "./components/ThreeDMarquee";
 import PortfolioIntroSection from "./components/ui/PortfolioIntroSection";
 import Footer from "./components/Footer";
 import TargetCursor from "./components/animations/TargetCursor";
+import ContactForm from "./components/ContactForm";
+import ScrollProgressIndicator from "./components/ScrollProgressIndicator";
 
 function App() {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -47,7 +50,8 @@ function App() {
 
   return (
     <div className="bg-[#13141f] text-white min-h-screen">
-      {!isMobile && (
+      <ScrollProgressIndicator />
+      {!isMobile && !showContactForm && (
         <TargetCursor 
           targetSelector=".cursor-target, button, a, [role='button'], .glare-hover, .service-card"
           spinDuration={2}
@@ -55,16 +59,26 @@ function App() {
         />
       )}
       {!showContactForm && <Navbar setShowContactForm={setShowContactForm} />}
-      <HeroSection 
-        showContactForm={showContactForm}
-        setShowContactForm={setShowContactForm}
-      />
-      <Grow />
-      <Services />
-      <PortfolioIntroSection/>
-      <PortfolioSection />
-      <ThreeDMarquee />
-      <Footer />
+      {!showContactForm && (
+        <>
+          <HeroSection 
+            showContactForm={showContactForm}
+            setShowContactForm={setShowContactForm}
+          />
+          <Grow />
+          <Services />
+          <PortfolioIntroSection/>
+          <PortfolioSection setShowContactForm={setShowContactForm} />
+          <ThreeDMarquee />
+          <Footer setShowContactForm={setShowContactForm} />
+        </>
+      )}
+      
+      {/* ContactForm rendered at document body level */}
+      {showContactForm && createPortal(
+        <ContactForm onClose={() => setShowContactForm(false)} />,
+        document.body
+      )}
     </div>
   );
 }

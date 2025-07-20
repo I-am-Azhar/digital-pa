@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 
-const Navbar = () => {
+const Navbar = ({ setShowContactForm, showContactForm }) => {
   const [expanded, setExpanded] = useState(false);
   const [showLeftLogo, setShowLeftLogo] = useState(false);
   const [showContent, setShowContent] = useState(false);
@@ -16,7 +16,7 @@ const Navbar = () => {
       { label: "Home", url: "#grow" },
       { label: "Services", url: "#services" },
       { label: "Portfolio", url: "#portfolio" },
-      { label: "About Us", url: "#about" },
+      { label: "Contact", url: "" },
     ],
     button: "Get Started",
   };
@@ -66,28 +66,33 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <motion.nav
-        initial={{
-          width: 64,
-          height: 64,
-          borderRadius: 9999,
-          padding: 0,
-          y: -40,
-        }}
-        animate={{
-          y: hideNavbar ? -100 : 0,
-          width: "90%",
-          ...(animatingHeight ? { height: 64 } : {}),
-          borderRadius: 24,
-          padding: "1rem 1.5rem",
-        }}
-        transition={{
-          duration: 1.0,
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
-        style={!animatingHeight ? { height: "auto" } : {}}
-        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)] overflow-hidden text-white hidden md:block"
-      >
+      {!showContactForm && (
+        <motion.nav
+          initial={{
+            width: 64,
+            height: 64,
+            borderRadius: 9999,
+            padding: 0,
+            y: -40,
+          }}
+          animate={{
+            y: hideNavbar ? -100 : 0,
+            width: "90%",
+            ...(animatingHeight ? { height: 64 } : {}),
+            borderRadius: 24,
+            padding: "1rem 1.5rem",
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.95,
+          }}
+          transition={{
+            duration: 1.0,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
+          style={!animatingHeight ? { height: "auto" } : {}}
+          className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)] overflow-hidden text-white hidden md:block"
+        >
         <div className="flex justify-between items-center w-full">
           <div className="flex items-center space-x-3">
             {showLeftLogo && (
@@ -123,6 +128,12 @@ const Navbar = () => {
                 <a
                   key={idx}
                   href={linkObj.url}
+                  onClick={(e) => {
+                    if (linkObj.label === "Contact") {
+                      e.preventDefault();
+                      setShowContactForm(true);
+                    }
+                  }}
                   className="text-sm hover:underline hover:underline-offset-4 hover:decoration-blue-500 transition-all cursor-target"
                 >
                   {linkObj.label}
@@ -137,34 +148,43 @@ const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <button className="px-3 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all cursor-target">
+              <button 
+                onClick={() => setShowContactForm(true)}
+                className="px-3 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all cursor-target"
+              >
                 {content.button}
               </button>
             </motion.div>
           )}
         </div>
       </motion.nav>
+        )}
 
       {/* Mobile Navbar */}
-      <motion.div
-        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
-        initial={{ 
-          width: "90%",
-          height: 48,
-          borderRadius: 24,
-          y: 0
-        }}
-        animate={{
-          y: hideNavbar ? -100 : 0,
-          width: hideNavbar ? 48 : "90%",
-          height: hideNavbar ? 48 : 48,
-          borderRadius: hideNavbar ? 9999 : 24,
-        }}
-        transition={{
-          duration: 0.8,
-          ease: [0.32, 0.72, 0, 1],
-        }}
-      >
+      {!showContactForm && (
+          <motion.div
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+            initial={{ 
+              width: "90%",
+              height: 48,
+              borderRadius: 24,
+              y: 0
+            }}
+            animate={{
+              y: hideNavbar ? -100 : 0,
+              width: hideNavbar ? 48 : "90%",
+              height: hideNavbar ? 48 : 48,
+              borderRadius: hideNavbar ? 9999 : 24,
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.95,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.32, 0.72, 0, 1],
+            }}
+          >
         <motion.div
           className={`w-full h-full ${hideNavbar ? 'rounded-full' : 'rounded-2xl'} bg-white/5 backdrop-blur-lg shadow-xl border border-white/10 flex items-center justify-center cursor-target`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -210,15 +230,24 @@ const Navbar = () => {
                   <a
                     key={idx}
                     href={linkObj.url}
+                    onClick={(e) => {
+                      if (linkObj.label === "Contact") {
+                        e.preventDefault();
+                        setShowContactForm(true);
+                      }
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="px-4 py-2 text-white hover:bg-white/10 transition-all text-sm cursor-target"
-                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {linkObj.label}
                   </a>
                 ))}
                 <button 
+                  onClick={() => {
+                    setShowContactForm(true);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="mx-4 mt-2 py-1 text-sm rounded-full bg-blue-600 text-white font-base hover:opacity-90 transition-all cursor-target"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {content.button}
                 </button>
@@ -227,6 +256,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
       </motion.div>
+        )}
     </>
   );
 };

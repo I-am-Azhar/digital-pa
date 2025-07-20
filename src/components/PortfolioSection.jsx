@@ -2,7 +2,7 @@ import React from "react";
 import { FlickeringGrid } from "./ui/flickering-grid";
 import Particles from "./bg/Particles";
 
-const PortfolioSection = () => {
+const PortfolioSection = ({ setShowContactForm }) => {
   return (
     <section id="portfolio" className="scroll-mt-24 bg-transperent text-white px-6 py-16 w-full relative" data-lenis-prevent>
       {/* Particles Background */}
@@ -44,7 +44,10 @@ const PortfolioSection = () => {
             ))}
           </div>
 
-          <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 md:px-6 md:py-2 rounded-md shadow text-sm md:text-base">
+          <button 
+            onClick={() => setShowContactForm(true)}
+            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 md:px-6 md:py-2 rounded-md shadow text-sm md:text-base cursor-target"
+          >
             View Full Portfolio →
           </button>
         </div>
