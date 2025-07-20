@@ -69,7 +69,22 @@ const ContactForm = ({ onClose }) => {
 
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Google Form URL and form data
+      const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/1cLgDwporClgY0aVQpAdQXHCoIQBm24C0XmkRUP6zE8Y/formResponse';
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append('entry.1350150339', formData.name);
+      formDataToSend.append('entry.2012611871', formData.email);
+      formDataToSend.append('entry.774501221', formData.service);
+      formDataToSend.append('entry.395253690', formData.message);
+
+      // Submit to Google Form
+      const response = await fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        body: formDataToSend,
+        mode: 'no-cors' // Required for Google Forms
+      });
+
       setSubmitMessage('Thank you for your message! We will get back to you soon.');
       setFormData({ 
         name: '', 
@@ -82,6 +97,7 @@ const ContactForm = ({ onClose }) => {
         onClose();
       }, 2000);
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitMessage('Something went wrong. Please try again later.');
     } finally {
       setIsSubmitting(false);
@@ -228,7 +244,7 @@ const ContactForm = ({ onClose }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </motion.button>
             </div>
           </form>

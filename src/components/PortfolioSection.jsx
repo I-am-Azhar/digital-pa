@@ -48,7 +48,7 @@ const PortfolioSection = ({ setShowContactForm }) => {
             onClick={() => setShowContactForm(true)}
             className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 md:px-6 md:py-2 rounded-md shadow text-sm md:text-base cursor-target"
           >
-            View Full Portfolio →
+            Contact Us →
           </button>
         </div>
 

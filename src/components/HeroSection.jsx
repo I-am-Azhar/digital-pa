@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
-import DarkVeil from "./bg/DarkWave";
+import DarkVeil from "./bg/Darkwave";
 import { useMediaQuery } from "react-responsive";
 import Magnet from "./animations/Magnet";
 import Particles from "./bg/Particles";
