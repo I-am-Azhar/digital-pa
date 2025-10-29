@@ -24,4 +24,7 @@ jobs:
     
     - name: Run ESLint
       run: npm run lint
+    
+    - name: Run Build (verify it compiles)
+      run: npm run build
 
