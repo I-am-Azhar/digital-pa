@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ServiceHero from "../components/services/ServiceHero";
-import ServiceFeatures from "../components/services/ServiceFeatures";
-import ServiceProcess from "../components/services/ServiceProcess";
-import ServicePricing from "../components/services/ServicePricing";
-import ServiceTestimonials from "../components/services/ServiceTestimonials";
+import ServiceHero from "../components/Services/ServiceHero";
+import ServiceFeatures from "../components/Services/ServiceFeatures";
+import ServiceProcess from "../components/Services/ServiceProcess";
+import ServicePricing from "../components/Services/ServicePricing";
+import ServiceTestimonials from "../components/Services/ServiceTestimonials";
 import Magnet from "../components/animations/Magnet";
 import Particles from "../components/bg/Particles";
 import { getAllServices } from "../data/servicesData";
