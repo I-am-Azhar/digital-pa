@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import CounterStat from "./CounterStat";
 import SplitText from "../animations/SplitText";
 import Particles from "../bg/Particles";

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { z } from 'zod';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Define the form schema with Zod
@@ -79,7 +80,7 @@ const ContactForm = ({ onClose }) => {
       formDataToSend.append('entry.395253690', formData.message);
 
       // Submit to Google Form
-      const response = await fetch(GOOGLE_FORM_URL, {
+      await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
         body: formDataToSend,
         mode: 'no-cors' // Required for Google Forms

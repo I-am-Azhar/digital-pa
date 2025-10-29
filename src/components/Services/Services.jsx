@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
 import GlareHover from "../animations/GlareHover";
 import Particles from "../bg/Particles";

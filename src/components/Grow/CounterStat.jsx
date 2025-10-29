@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
 
 const CounterStat = ({ target, label, suffix = "" }) => {

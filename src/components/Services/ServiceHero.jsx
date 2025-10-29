@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from "framer-motion";
 import Particles from "../bg/Particles";
 import Magnet from "../animations/Magnet";
@@ -41,10 +42,10 @@ const serviceIcons = {
 };
 
 const ServiceHero = ({ service, setShowContactForm }) => {
-  const words = serviceWords[service.slug] || ["Growth", "Presence", "Success"];
+  const words = useMemo(() => serviceWords[service.slug] || ["Growth", "Presence", "Success"], [service.slug]);
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState(words[0] || "Success");
+  const [, setDisplayedText] = useState(words[0] || "Success");
   const [startTyping, setStartTyping] = useState(false);
 
   const floatingIcons = serviceIcons[service.slug] || serviceIcons["digital-marketing"];

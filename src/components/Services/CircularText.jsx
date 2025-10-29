@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 
 const getRotationTransition = (duration, from, loop = true) => ({

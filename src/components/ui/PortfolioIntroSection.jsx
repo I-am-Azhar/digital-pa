@@ -1,6 +1,7 @@
 import React from "react";
 import { FlickeringGrid } from "./flickering-grid";
 import { GradualSpacing } from "./gradual-spacing";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Particles from "../bg/Particles";

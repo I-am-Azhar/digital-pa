@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import DarkVeil from "./bg/Darkwave";
@@ -6,8 +7,8 @@ import { useMediaQuery } from "react-responsive";
 import Magnet from "./animations/Magnet";
 import Particles from "./bg/Particles";
 
-const HeroSection = ({ showContactForm, setShowContactForm }) => {
-  const words = ["Growth", "Presence", "Journey"];
+const HeroSection = ({ setShowContactForm }) => {
+  const words = useMemo(() => ["Growth", "Presence", "Journey"], []);
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("Success");
@@ -41,7 +42,7 @@ const HeroSection = ({ showContactForm, setShowContactForm }) => {
     }, 100);
 
     return () => clearInterval(typeInterval);
-  }, [currentWordIndex, startTyping]);
+  }, [currentWordIndex, startTyping, words]);
 
   const { scrollY } = useScroll();
   const translateY = useTransform(scrollY, [0, 300], [0, 50]);

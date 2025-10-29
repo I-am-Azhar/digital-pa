@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = ({ setShowContactForm, showContactForm }) => {
   const location = useLocation();
-  const [expanded, setExpanded] = useState(false);
   const [showLeftLogo, setShowLeftLogo] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [animatingHeight, setAnimatingHeight] = useState(true);
@@ -25,13 +25,11 @@ const Navbar = ({ setShowContactForm, showContactForm }) => {
   };
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setExpanded(true), 100);
     const timer2 = setTimeout(() => setShowLeftLogo(true), 1000);
     const timer3 = setTimeout(() => setShowContent(true), 1050);
     const timer4 = setTimeout(() => setAnimatingHeight(false), 1100);
 
     return () => {
-      clearTimeout(timer1);
       clearTimeout(timer2);
       clearTimeout(timer3);
       clearTimeout(timer4);

@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, useRef } from "react";
+import { useState, useEffect, createContext, useRef } from "react";
 import { createPortal } from "react-dom";
 import Lenis from "@studio-freight/lenis";
 
@@ -9,7 +9,9 @@ import ScrollProgressIndicator from "../ScrollProgressIndicator";
 import TargetCursor from "../animations/TargetCursor";
 import PageTransition from "./PageTransition";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ContactFormContext = createContext(null);
+// eslint-disable-next-line react-refresh/only-export-components
 export const LenisContext = createContext(null);
 
 const PageLayout = ({ children }) => {
