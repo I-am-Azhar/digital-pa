@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import Lenis from "@studio-freight/lenis";
 
 const Navbar = ({ setShowContactForm, showContactForm }) => {
+  const location = useLocation();
   const [expanded, setExpanded] = useState(false);
   const [showLeftLogo, setShowLeftLogo] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [animatingHeight, setAnimatingHeight] = useState(true);
   const [hideNavbar, setHideNavbar] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const isServicePage = location.pathname.startsWith('/services');
 
   const content = {
     brand: "DigitalPa ",
@@ -36,12 +39,7 @@ const Navbar = ({ setShowContactForm, showContactForm }) => {
   }, []);
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
-
-    const handleScroll = ({ scroll }) => {
+    const handleScroll = () => {
       const growSection = document.getElementById("grow");
       if (growSection) {
         const { top } = growSection.getBoundingClientRect();
@@ -49,24 +47,21 @@ const Navbar = ({ setShowContactForm, showContactForm }) => {
       }
     };
 
-    lenis.on('scroll', handleScroll);
+    // Use window scroll events - works with Lenis smooth scrolling from PageLayout
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
+    // Initial check
+    handleScroll();
 
     return () => {
-      lenis.off('scroll', handleScroll);
-      lenis.destroy();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <>
       {/* Desktop Navbar */}
-      {!showContactForm && (
+      {!showContactForm && !isServicePage && (
         <motion.nav
           initial={{
             width: 64,
@@ -161,7 +156,7 @@ const Navbar = ({ setShowContactForm, showContactForm }) => {
         )}
 
       {/* Mobile Navbar */}
-      {!showContactForm && (
+      {!showContactForm && !isServicePage && (
           <motion.div
             className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
             initial={{ 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import GlareHover from "../animations/GlareHover";
 import Particles from "../bg/Particles";
@@ -8,18 +9,22 @@ const serviceCards = [
   {
     title: "Digital Marketing",
     image: "/icons/digital-marketing.png",
+    slug: "digital-marketing",
   },
   {
     title: "Social Media Marketing",
     image: "/icons/social-media.png",
+    slug: "social-media-marketing",
   },
   {
     title: "Branding Offline/Online",
     image: "/icons/branding.png",
+    slug: "branding",
   },
   {
     title: "Web Development",
     image: "/icons/web-development.png",
+    slug: "web-development",
   },
 ];
 
@@ -72,23 +77,24 @@ const Services = () => {
       <div className="max-w-6xl mx-auto space-y-6 md:space-y-12 relative z-10">
         {/* Top Row */}
         <div className="grid grid-cols-2 gap-4 md:gap-8">
-          {serviceCards.slice(0, 2).map(({ title, image }) => (
-            <GlareHover
-              key={title}
-              width="100%"
-              height="auto"
-              background="#0f172a"
-              borderRadius="16px"
-              borderColor="#1e293b"
-              glareColor="#3b82f6"
-              glareOpacity={0.3}
-              className="transition duration-300 hover:scale-[1.02] service-card"
-            >
-              <div className="p-10 flex flex-col items-center justify-center">
-                <img src={image} alt={title} className="w-16 h-16 md:w-24 md:h-24 object-contain mb-6 invert" />
-                <h3 className="text-md font-semibold text-blue-500 text-center">{title}</h3>
-              </div>
-            </GlareHover>
+          {serviceCards.slice(0, 2).map(({ title, image, slug }) => (
+            <Link key={title} to={`/services/${slug}`} className="cursor-target">
+              <GlareHover
+                width="100%"
+                height="auto"
+                background="#0f172a"
+                borderRadius="16px"
+                borderColor="#1e293b"
+                glareColor="#3b82f6"
+                glareOpacity={0.3}
+                className="transition duration-300 hover:scale-[1.02] service-card"
+              >
+                <div className="p-10 flex flex-col items-center justify-center">
+                  <img src={image} alt={title} className="w-16 h-16 md:w-24 md:h-24 object-contain mb-6 invert" />
+                  <h3 className="text-md font-semibold text-blue-500 text-center">{title}</h3>
+                </div>
+              </GlareHover>
+            </Link>
           ))}
         </div>
 
@@ -97,23 +103,24 @@ const Services = () => {
 
         {/* Bottom Row */}
         <div className="grid grid-cols-2 gap-4 md:gap-8">
-          {serviceCards.slice(2, 4).map(({ title, image }) => (
-            <GlareHover
-              key={title}
-              width="100%"
-              height="auto"
-              background="#0f172a"
-              borderRadius="16px"
-              borderColor="#1e293b"
-              glareColor="#3b82f6"
-              glareOpacity={0.3}
-              className="transition duration-300 hover:scale-[1.02] service-card"
-            >
-              <div className="p-10 flex flex-col items-center justify-center">
-                <img src={image} alt={title} className="w-16 h-16 md:w-24 md:h-24 object-contain mb-6 invert" />
-                <h3 className="text-md font-semibold text-blue-500 text-center">{title}</h3>
-              </div>
-            </GlareHover>
+          {serviceCards.slice(2, 4).map(({ title, image, slug }) => (
+            <Link key={title} to={`/services/${slug}`} className="cursor-target">
+              <GlareHover
+                width="100%"
+                height="auto"
+                background="#0f172a"
+                borderRadius="16px"
+                borderColor="#1e293b"
+                glareColor="#3b82f6"
+                glareOpacity={0.3}
+                className="transition duration-300 hover:scale-[1.02] service-card"
+              >
+                <div className="p-10 flex flex-col items-center justify-center">
+                  <img src={image} alt={title} className="w-16 h-16 md:w-24 md:h-24 object-contain mb-6 invert" />
+                  <h3 className="text-md font-semibold text-blue-500 text-center">{title}</h3>
+                </div>
+              </GlareHover>
+            </Link>
           ))}
         </div>
       </div>

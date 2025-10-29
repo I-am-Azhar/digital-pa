@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FlickeringGrid } from "./ui/flickering-grid";
 import Particles from "./bg/Particles";
 
@@ -30,17 +31,18 @@ const PortfolioSection = ({ setShowContactForm }) => {
 
           <div className="grid grid-cols-2 gap-4">
             {[
-              "Digital Marketing",
-              "Social Media Marketing",
-              "Branding Offline/Online",
-              "Web Development",
+              { name: "Digital Marketing", slug: "digital-marketing" },
+              { name: "Social Media Marketing", slug: "social-media-marketing" },
+              { name: "Branding Offline/Online", slug: "branding" },
+              { name: "Web Development", slug: "web-development" },
             ].map((service, index) => (
-              <button
+              <Link
                 key={index}
-                className="flex items-center gap-2 bg-black/40 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-left md:text-center"
+                to={`/services/${service.slug}`}
+                className="flex items-center gap-2 bg-black/40 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-left md:text-center cursor-target"
               >
-                <span className="text-blue-400">●</span> {service}
-              </button>
+                <span className="text-blue-400">●</span> {service.name}
+              </Link>
             ))}
           </div>
 

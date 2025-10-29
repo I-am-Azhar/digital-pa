@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = ({ setShowContactForm }) => {
   return (
@@ -30,10 +31,10 @@ const Footer = ({ setShowContactForm }) => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Digital Marketing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Web Development</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Social Media</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Branding</a></li>
+              <li><Link to="/services/digital-marketing" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Digital Marketing</Link></li>
+              <li><Link to="/services/web-development" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Web Development</Link></li>
+              <li><Link to="/services/social-media-marketing" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Social Media</Link></li>
+              <li><Link to="/services/branding" className="text-gray-400 hover:text-blue-500 transition-all duration-300 ease-in-out transform hover:translate-x-1 cursor-target">Branding</Link></li>
             </ul>
           </div>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const CounterStat = ({ target, label }) => {
+const CounterStat = ({ target, label, suffix = "" }) => {
   const [count, setCount] = useState(0);
   const [done, setDone] = useState(false);
 
@@ -45,12 +45,12 @@ const CounterStat = ({ target, label }) => {
           } : {}}
           transition={{ duration: 0.5 }}
         >
-          {count}
+          {count}{suffix}
           <span className="relative">
-            {done && (
+            {done && !suffix && (
               <span className="shooting-star absolute inset-0" />
             )}
-            +
+            {!suffix && "+"}
           </span>
         </motion.h2>
       </div>
